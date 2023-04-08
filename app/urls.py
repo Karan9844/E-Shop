@@ -25,8 +25,11 @@ urlpatterns = [
     path('laptop/', views.laptop, name='laptop'),
     path('laptop/<slug:data>', views.laptop, name='laptopdata'),
 
-    path('topwera/', views.topwear, name='topwear'),
-    path('topwear/<slug:data>', views.topwear, name='topweardata'),
+    path('topwears/', views.topwears, name='topwears'),
+    path('topwears/<slug:data>', views.topwears, name='topwearsdata'),
+
+    path('bottomwears/', views.bottomwears, name='bottomwears'),
+    path('bottomwears/<slug:data>', views.bottomwears, name='bottomwearsdata'),
 
     path('accounts/login/', auth_views.LoginView.as_view(template_name='app/login.html', authentication_form=LoginForm), name='login'),
     # path('profile/', views.profile, name='profile'),
