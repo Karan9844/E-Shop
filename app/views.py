@@ -14,9 +14,10 @@ class ProductView(View):
 		topwears = Product.objects.filter(category='TW')
 		bottomwears = Product.objects.filter(category='BW')
 		mobiles = Product.objects.filter(category='M')
+		laptop = Product.objects.filter(category='L')
 		if request.user.is_authenticated:
 			totalitem = len(Cart.objects.filter(user=request.user))
-		return render(request, 'app/home.html', {'topwears':topwears, 'bottomwears':bottomwears, 'mobiles':mobiles, 'totalitem':totalitem})
+		return render(request, 'app/home.html', {'topwears':topwears, 'bottomwears':bottomwears, 'mobiles':mobiles,'laptop':'laptop', 'totalitem':totalitem})
 
 class ProductDetailView(View):
 	def get(self, request, pk):
@@ -201,6 +202,20 @@ def mobile(request, data=None):
 	elif data == 'above':
 			mobiles = Product.objects.filter(category='M').filter(discounted_price__gt=10000)
 	return render(request, 'app/mobile.html', {'mobiles':mobiles, 'totalitem':totalitem})
+
+def laptop(request, data=None):
+	totalitem = 0
+	if request.user.is_authenticated:
+		totalitem = len(Cart.objects.filter(user=request.user))
+	if data==None :
+			laptop = Product.objects.filter(category='L')
+	elif data == 'Dell' or data == 'HP':
+			laptop = Product.objects.filter(category='L').filter(brand=data)
+	elif data == 'below':
+			laptop = Product.objects.filter(category='L').filter(discounted_price__lt=50000)
+	elif data == 'above':
+			laptop = Product.objects.filter(category='L').filter(discounted_price__gt=50000)
+	return render(request, 'app/laptop.html', {'laptop':laptop, 'totalitem':totalitem})
 
 
 class CustomerRegistrationView(View):
