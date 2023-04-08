@@ -25,6 +25,9 @@ urlpatterns = [
     path('laptop/', views.laptop, name='laptop'),
     path('laptop/<slug:data>', views.laptop, name='laptopdata'),
 
+    path('topwera/', views.topwear, name='topwear'),
+    path('topwear/<slug:data>', views.topwear, name='topweardata'),
+
     path('accounts/login/', auth_views.LoginView.as_view(template_name='app/login.html', authentication_form=LoginForm), name='login'),
     # path('profile/', views.profile, name='profile'),
     path('profile/', views.ProfileView.as_view(), name='profile'),

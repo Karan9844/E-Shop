@@ -195,12 +195,12 @@ def mobile(request, data=None):
 		totalitem = len(Cart.objects.filter(user=request.user))
 	if data==None :
 			mobiles = Product.objects.filter(category='M')
-	elif data == 'Redmi' or data == 'Samsung':
+	elif data == 'Redmi' or data == 'Samsung' or data == 'Apple':
 			mobiles = Product.objects.filter(category='M').filter(brand=data)
 	elif data == 'below':
-			mobiles = Product.objects.filter(category='M').filter(discounted_price__lt=10000)
+			mobiles = Product.objects.filter(category='M').filter(discounted_price__lt=50000)
 	elif data == 'above':
-			mobiles = Product.objects.filter(category='M').filter(discounted_price__gt=10000)
+			mobiles = Product.objects.filter(category='M').filter(discounted_price__gt=50000)
 	return render(request, 'app/mobile.html', {'mobiles':mobiles, 'totalitem':totalitem})
 
 def laptop(request, data=None):
@@ -209,14 +209,26 @@ def laptop(request, data=None):
 		totalitem = len(Cart.objects.filter(user=request.user))
 	if data==None :
 			laptop = Product.objects.filter(category='L')
-	elif data == 'Dell' or data == 'HP':
+	elif data == 'Dell' or data == 'HP' or data == 'ASUS':
 			laptop = Product.objects.filter(category='L').filter(brand=data)
 	elif data == 'below':
 			laptop = Product.objects.filter(category='L').filter(discounted_price__lt=50000)
 	elif data == 'above':
 			laptop = Product.objects.filter(category='L').filter(discounted_price__gt=50000)
 	return render(request, 'app/laptop.html', {'laptop':laptop, 'totalitem':totalitem})
-
+def topwear(request, data=None):
+	totalitem = 0
+	if request.user.is_authenticated:
+		totalitem = len(Cart.objects.filter(user=request.user))
+	if data==None :
+			topwear = Product.objects.filter(category='TW')
+	#elif data == 'Dell' or data == 'HP' or data == 'ASUS':
+			#laptop = Product.objects.filter(category='L').filter(brand=data)
+	elif data == 'below':
+			topwear = Product.objects.filter(category='TW').filter(discounted_price__lt=300)
+	elif data == 'above':
+			topwear = Product.objects.filter(category='TW').filter(discounted_price__gt=300)
+	return render(request, 'app/topwear.html', {'topwear':topwear, 'totalitem':totalitem})
 
 class CustomerRegistrationView(View):
  def get(self, request):
