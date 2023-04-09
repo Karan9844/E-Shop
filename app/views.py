@@ -195,7 +195,7 @@ def mobile(request, data=None):
 		totalitem = len(Cart.objects.filter(user=request.user))
 	if data==None :
 			mobiles = Product.objects.filter(category='M')
-	elif data == 'Redmi' or data == 'Samsung' or data == 'Apple':
+	elif data == 'OnePlus' or data == 'Samsung' or data == 'Apple':
 			mobiles = Product.objects.filter(category='M').filter(brand=data)
 	elif data == 'below':
 			mobiles = Product.objects.filter(category='M').filter(discounted_price__lt=50000)
