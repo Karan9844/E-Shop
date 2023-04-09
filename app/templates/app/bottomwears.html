@@ -7,13 +7,13 @@
   <div class="col-sm-2">
    <div class="list-group">
      <a href="{% url 'bottomwears' %}" class="list-group-item list-group-item-action" aria-current="true">All Bottomwear</a>
-     <a href="{% url 'bottomwearsdata' 'below'  %}" class="list-group-item list-group-item-action">Below 300</a>
-     <a href="{% url 'bottomwearsdata' 'above'  %}" class="list-group-item list-group-item-action">Above 300</a>
+     <a href="{% url 'bottomwearsdata' 'below'  %}" class="list-group-item list-group-item-action">Below 400</a>
+     <a href="{% url 'bottomwearsdata' 'above'  %}" class="list-group-item list-group-item-action">Above 400</a>
    </div>
   </div>
   <div class="col-sm-9">
    <div class="row">
-    {% for product in topwears %}
+    {% for product in bottomwears %}
      <div class="col-sm-4 text-center mb-3">
       <a href="{% url 'product-detail' product.id %}" class="btn">
        <div class="item">

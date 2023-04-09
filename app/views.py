@@ -239,9 +239,9 @@ def bottomwears(request, data=None):
 	#elif data == 'Dell' or data == 'HP' or data == 'ASUS':
 			#laptop = Product.objects.filter(category='L').filter(brand=data)
 	elif data == 'below':
-			bottomwears = Product.objects.filter(category='BW').filter(discounted_price__lt=300)
+			bottomwears = Product.objects.filter(category='BW').filter(discounted_price__lt=400)
 	elif data == 'above':
-			bottomwears = Product.objects.filter(category='BW').filter(discounted_price__gt=300)
+			bottomwears = Product.objects.filter(category='BW').filter(discounted_price__gt=400)
 	return render(request, 'app/bottomwears.html', {'bottomwears':bottomwears, 'totalitem':totalitem})
 class CustomerRegistrationView(View):
  def get(self, request):
