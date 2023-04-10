@@ -17,7 +17,7 @@ class ProductView(View):
 		laptop = Product.objects.filter(category='L')
 		if request.user.is_authenticated:
 			totalitem = len(Cart.objects.filter(user=request.user))
-		return render(request, 'app/home.html', {'topwears':topwears, 'bottomwears':bottomwears, 'mobiles':mobiles,'laptop':'laptop', 'totalitem':totalitem})
+		return render(request, 'app/home.html', {'topwears':topwears, 'bottomwears':bottomwears, 'mobiles':mobiles,'laptop':laptop, 'totalitem':totalitem})
 
 class ProductDetailView(View):
 	def get(self, request, pk):
