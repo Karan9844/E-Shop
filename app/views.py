@@ -225,9 +225,9 @@ def topwears(request, data=None):
 	#elif data == 'Dell' or data == 'HP' or data == 'ASUS':
 			#laptop = Product.objects.filter(category='L').filter(brand=data)
 	elif data == 'below':
-			topwears = Product.objects.filter(category='TW').filter(discounted_price__lt=300)
+			topwears = Product.objects.filter(category='TW').filter(discounted_price__lt=650)
 	elif data == 'above':
-			topwears = Product.objects.filter(category='TW').filter(discounted_price__gt=300)
+			topwears = Product.objects.filter(category='TW').filter(discounted_price__gt=650)
 	return render(request, 'app/topwears.html', {'topwears':topwears, 'totalitem':totalitem})
 
 def bottomwears(request, data=None):
@@ -254,7 +254,8 @@ class CustomerRegistrationView(View):
    messages.success(request, 'Congratulations!! Registered Successfully.')
    form.save()
   return render(request, 'app/customerregistration.html', {'form':form})
-
+def aboutus(request):
+	return render(request, 'app/aboutus.html')
 @method_decorator(login_required, name='dispatch')
 class ProfileView(View):
 	def get(self, request):

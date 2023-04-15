@@ -38,7 +38,6 @@
         </div>
       {% endfor %}
         <div class="border p-3">
-          {% comment %} <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold" id="continuebtn">Continue</button> {% endcomment %}
           <!-- Set up a container element for the button -->
           <p class="fw-bold">Payment Options:</p>
           <div id="paypal-button-container"></div>
@@ -51,7 +50,7 @@
 
 {% block payment-gateway %} 
  <!-- Include the PayPal JavaScript SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AcVZa-HPlZlNocX7zBdDevMj4mhGByljsfe-0FXArxN1tQ_MPDlXf_6utBgx5zb5vsaxcr0FIDbTupZy&currency=USD"></script>
 
     <script>
         // Render the PayPal button into #paypal-button-container
